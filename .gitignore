@@ -1,0 +1,8 @@
+out/
+target/
+ffi/
+world/
+interface/
+gen/
+moon.mod
+_build/
