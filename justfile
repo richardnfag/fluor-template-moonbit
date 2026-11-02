@@ -4,7 +4,9 @@ default:
 init:
     wit-bindgen moonbit wit/world.wit --out-dir .
     mkdir -p gen/interface/fluor/fun/handler
-    printf '%s\n' '///|' 'pub fn handle(_request : Request) -> Result[Response, Error_] {' '  Ok({' '    status: 200,' '    headers: [],' '    body: "{\"message\":\"Hello from {{project-name}}\"}",' '  })' '}' > gen/interface/fluor/fun/handler/impl.mbt
+    cp guest/impl.mbt gen/interface/fluor/fun/handler/impl.mbt
+    cp guest/abi.mbt gen/interface/fluor/fun/handler/abi.mbt
+    python3 guest/patch_ffi.py gen/interface/fluor/fun/handler/ffi.mbt gen/interface/fluor/fun/handler/moon.pkg
 
 build: init
     mkdir -p out

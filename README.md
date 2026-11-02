@@ -15,6 +15,6 @@ Starter template for a Fluor function in MoonBit using `wit-bindgen` and `wasm-t
 just build
 ```
 
-This template generates the MoonBit bindings, writes the `handler.handle` implementation into `gen/interface/fluor/fun/handler/impl.mbt`, and produces `out/{{project-name}}.wasm`.
+This template generates the MoonBit bindings, copies `guest/impl.mbt` into place, and produces `out/{{project-name}}.wasm`. `wit-bindgen` 0.63 exchanges MoonBit strings as UTF-16, so the build rewrites that marshalling to the UTF-8 canonical ABI before compiling.
 
 The generated component targets Fluor's `v2` contract with an exported `handler` interface and typed `request`/`response` records.
